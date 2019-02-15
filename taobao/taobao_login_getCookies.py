@@ -5,7 +5,7 @@ from pyppeteer import launch
 from retrying import retry
 
 
-async def taoBaoLogin(username='18269411189', password='pang15878042803', url='https://login.taobao.com/member/login.jhtml?redirectURL=https%3A%2F%2Fwww.taobao.com%2F'):
+async def taoBaoLogin(username, password, url='https://login.taobao.com/member/login.jhtml?redirectURL=https%3A%2F%2Fwww.taobao.com%2F'):
     #'headless': False如果想要浏览器隐藏更改False为True
     # 127.0.0.1:1080为代理ip和端口，这个根据自己的本地代理进行更改，如果是vps里或者全局模式可以删除掉'--proxy-server=127.0.0.1:1080'
     browser = await launch({'headless': False, 'args': ['--no-sandbox',"–ash-host-window-bounds=1024x768"], })
@@ -111,11 +111,10 @@ def input_time_random():
     return random.randint(100, 151)
 
 if __name__ == '__main__':
-    # username = '18269411189'
-    # password = r'pang15878042803'
-    # url = 'https://login.taobao.com/member/login.jhtml?redirectURL=https%3A%2F%2Fwww.taobao.com%2F'
+    username = 'xxxxxxxxxxxxxx'
+    password = r'xxxxxxxxxxxxxx'
+    url = 'https://login.taobao.com/member/login.jhtml?redirectURL=https%3A%2F%2Fwww.taobao.com%2F'
     loop = asyncio.get_event_loop()
-    task = asyncio.ensure_future(taoBaoLogin())
-    loop.run_until_complete(task)
-    cookie = task.result()
-    print(cookie)   #unb=2703869308;_uab_collina=154866322762582270247938;log=lty=Ug%3D%3D;cookieCheck=7872;_tb_token_=e1317e3f3b66e;t=73bc225db73c962e43c4520391b0d73e;cna=uqfVFEHfzXYCAXFhfYsXC/B0;cookie2=165b688151cc409cc26dda175af4cd2a;lid=%E4%B8%B6%E5%A2%A8%E8%BF%B9%E5%A2%A8%E8%BF%B9%E4%B8%B6;v=0;sg=%E4%B8%B688;_l_g_=Ug%3D%3D;skt=e6c75d7eb4fcd7ef;l=bBLm9kBrvsmSww31BOCZ-Fzi7M_OSIRYSuJaIsEDi_5KQ6T_lf_OlW8uaF96VjfR_DLBq2Fvhwy9-etuw;lc=VypQ05%2Fd7mboplkQi7OisSs%3D;cookie1=Vv8QuiguQsJfpsaa27SYQYEt7MibMYhFmijePk24YbM%3D;csg=348f9a94;uc3=vt3=F8dByE7ampH5%2Beu%2Ft9w%3D&id2=UU8IP0hJQI9%2Fow%3D%3D&nk2=u%2F4KzUxHYhFpELE8&lg2=UtASsssmOIJ0bQ%3D%3D;existShop=MTU0ODY2MzI0MA%3D%3D;tracknick=%5Cu4E36%5Cu58A8%5Cu8FF9%5Cu58A8%5Cu8FF9%5Cu4E36;lgc=%5Cu4E36%5Cu58A8%5Cu8FF9%5Cu58A8%5Cu8FF9%5Cu4E36;_cc_=W5iHLLyFfA%3D%3D;mt=ci=5_1;dnk=%5Cu4E36%5Cu58A8%5Cu8FF9%5Cu58A8%5Cu8FF9%5Cu4E36;_nk_=%5Cu4E36%5Cu58A8%5Cu8FF9%5Cu58A8%5Cu8FF9%5Cu4E36;cookie17=UU8IP0hJQI9%2Fow%3D%3D;tg=0;thw=cn;uc1=cookie16=U%2BGCWk%2F74Mx5tgzv3dWpnhjPaQ%3D%3D&cookie21=WqG3DMC9Fb5mPLIQo9kR&cookie15=Vq8l%2BKCLz3%2F65A%3D%3D&existShop=false&pas=0&cookie14=UoTYPmfqkfjWZQ%3D%3D&tag=8&lng=zh_CN;isg=BLa22BtL9k_FR4Ir6bMwBuFbB-zJtoeaDWeQ6CCfohk0Y1b9iGdKIRyRfz4PTvIp;
+    cookies = loop.run_until_complete(taoBaoLogin(username,password,url))
+    print(cookies)
+
