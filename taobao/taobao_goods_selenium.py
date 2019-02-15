@@ -130,7 +130,7 @@ def main():
         #int类型刚才找到的总页数标签，作为跳出循环的条件
         total = int(re.compile('(\d+)').search(total).group(1))
         #只要后面还有就继续爬，继续翻页
-        for i in range(2, 4):
+        for i in range(2, total+1):
             next_page(i)
             time.sleep(2)   #速度放慢
     except Exception as e:
@@ -144,8 +144,8 @@ def main():
 
 
 if __name__ == '__main__':
-    username = '18269411189'   #登陆淘宝的账号
-    password = 'pang15878042803'   #登陆密码
+    username = 'xxxxxx'   #登陆淘宝的账号
+    password = 'xxxxxxx'   #登陆密码
     keyword = '美食'     #需要获取的商品关键字
     #第一次登陆
     loop = asyncio.get_event_loop()
